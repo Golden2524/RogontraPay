@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Golden Pay dashboard demo showing balances, payment shortcuts, and recent activity.">
+  <title>Golden Pay — Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+  <header class="dashboard-header">
+    <div class="container">
+      <a href="index.html" class="logo">Golden Pay</a>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="line line1" d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path class="line line2" d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path class="line line3" d="M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <nav id="primary-navigation" class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="container">
+      <div class="dashboard-greeting">
+        <div>
+          <p class="eyebrow">Friday, 18 September</p>
+          <h1>Good morning, Daniel</h1>
+          <p>Here is a clear view of your money today.</p>
+        </div>
+        <button class="icon-button" type="button" data-demo-action="Notifications are up to date." aria-label="View notifications">◌</button>
+      </div>
+
+      <section class="account-summary" aria-labelledby="balance-heading">
+        <div class="balance-copy">
+          <p id="balance-heading">Available balance</p>
+          <div class="balance-row"><strong data-balance>₦245,800.00</strong><button class="text-button" type="button" data-balance-toggle aria-pressed="false">Hide balance</button></div>
+          <span class="account-number">Golden Pay account · 0123456789</span>
+        </div>
+        <a class="btn-secondary balance-action" href="#quick-actions">Make a payment</a>
+      </section>
+
+      <section id="quick-actions" class="quick-actions" aria-labelledby="quick-actions-heading">
+        <h2 id="quick-actions-heading">Quick actions</h2>
+        <div class="action-grid">
+          <button class="action-card" type="button" data-demo-action="Transfers will be available when the transaction flow is built."><span class="action-icon">↑</span><span>Transfer</span></button>
+          <button class="action-card" type="button" data-demo-action="Airtime purchase will be connected to the backend later."><span class="action-icon">⌁</span><span>Buy airtime</span></button>
+          <button class="action-card" type="button" data-demo-action="Bill payment will be connected to the backend later."><span class="action-icon">▣</span><span>Pay bills</span></button>
+          <button class="action-card" type="button" data-demo-action="Card controls will be available in a future dashboard update."><span class="action-icon">▤</span><span>My cards</span></button>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+        <section class="dashboard-card spending-card" aria-labelledby="spending-heading">
+          <div class="card-heading"><div><p class="card-label">Spending overview</p><h2 id="spending-heading">This week</h2></div><span class="trend-positive">+12.4%</span></div>
+          <div class="chart" aria-label="Spending chart for the last seven days" role="img"><span style="height: 31%"></span><span style="height: 49%"></span><span style="height: 38%"></span><span style="height: 67%"></span><span style="height: 53%"></span><span style="height: 85%"></span><span style="height: 61%"></span></div>
+          <div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        </section>
+
+        <section class="dashboard-card transactions-card" aria-labelledby="transactions-heading">
+          <div class="card-heading"><div><p class="card-label">Latest activity</p><h2 id="transactions-heading">Recent transactions</h2></div><button class="text-button" type="button" data-demo-action="The full transaction history will be added next.">View all</button></div>
+          <ul class="transaction-list">
+            <li><span class="transaction-icon received">↓</span><span class="transaction-name">Payment received<small>Today, 09:42</small></span><strong class="amount-positive">+₦75,000.00</strong></li>
+            <li><span class="transaction-icon sent">↑</span><span class="transaction-name">Airtime purchase<small>Yesterday, 18:10</small></span><strong>-₦2,000.00</strong></li>
+            <li><span class="transaction-icon sent">↑</span><span class="transaction-name">Transfer to Chioma<small>16 Sep, 14:32</small></span><strong>-₦15,500.00</strong></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
