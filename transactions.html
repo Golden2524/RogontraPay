@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Golden Pay transaction history demo.">
+  <title>Golden Pay — Transaction history</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+  <header class="dashboard-header">
+    <div class="container">
+      <a href="index.html" class="logo">Golden Pay</a>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="line line1" d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path class="line line2" d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path class="line line3" d="M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <nav id="primary-navigation" class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="transactions-main">
+    <div class="transactions-shell">
+      <a class="back-link" href="dashboard.html">← Back to dashboard</a>
+      <div class="transactions-heading">
+        <div><p class="eyebrow">Account activity</p><h1>Transaction history</h1></div>
+        <button class="download-button" type="button" data-demo-action="Statement downloads will be available when the backend is connected.">Download statement</button>
+      </div>
+
+      <section class="history-summary" aria-label="Transaction summary">
+        <div><span>Money in</span><strong class="amount-positive">₦186,500.00</strong></div>
+        <div><span>Money out</span><strong>₦42,850.00</strong></div>
+        <div><span>Transactions</span><strong>8</strong></div>
+      </section>
+
+      <section class="history-card" aria-labelledby="activity-heading">
+        <div class="history-card-heading"><h2 id="activity-heading">All activity</h2><span>September 2026</span></div>
+        <div class="transaction-filters" role="group" aria-label="Filter transactions">
+          <button class="filter-button is-active" type="button" data-transaction-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-transaction-filter="in" aria-pressed="false">Money in</button>
+          <button class="filter-button" type="button" data-transaction-filter="out" aria-pressed="false">Money out</button>
+        </div>
+
+        <ul class="history-list" data-transaction-list>
+          <li data-transaction-type="in"><span class="transaction-icon received">↓</span><span class="transaction-name">Payment received<small>18 Sep, 09:42 · Transfer</small></span><strong class="amount-positive">+₦75,000.00</strong></li>
+          <li data-transaction-type="out"><span class="transaction-icon sent">↑</span><span class="transaction-name">Airtime purchase<small>17 Sep, 18:10 · Airtime</small></span><strong>-₦2,000.00</strong></li>
+          <li data-transaction-type="out"><span class="transaction-icon sent">↑</span><span class="transaction-name">Transfer to Chioma<small>16 Sep, 14:32 · Transfer</small></span><strong>-₦15,500.00</strong></li>
+          <li data-transaction-type="in"><span class="transaction-icon received">↓</span><span class="transaction-name">Project payment<small>14 Sep, 11:08 · Transfer</small></span><strong class="amount-positive">+₦111,500.00</strong></li>
+          <li data-transaction-type="out"><span class="transaction-icon sent">↑</span><span class="transaction-name">Electricity bill<small>12 Sep, 08:21 · Bills</small></span><strong>-₦12,350.00</strong></li>
+          <li data-transaction-type="out"><span class="transaction-icon sent">↑</span><span class="transaction-name">Transfer to Tunde<small>09 Sep, 16:48 · Transfer</small></span><strong>-₦13,000.00</strong></li>
+        </ul>
+        <p class="empty-history" data-empty-history hidden>No transactions match this filter.</p>
+      </section>
+    </div>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

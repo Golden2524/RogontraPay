@@ -98,3 +98,28 @@ if (editTransferButton && transferForm && transferReview) {
     transferForm.querySelector('#bank').focus();
   });
 }
+
+const transactionFilterButtons = document.querySelectorAll('[data-transaction-filter]');
+const historyItems = document.querySelectorAll('[data-transaction-type]');
+const emptyHistory = document.querySelector('[data-empty-history]');
+
+transactionFilterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.transactionFilter;
+    let visibleCount = 0;
+
+    transactionFilterButtons.forEach((filterButton) => {
+      const isSelected = filterButton === button;
+      filterButton.classList.toggle('is-active', isSelected);
+      filterButton.setAttribute('aria-pressed', String(isSelected));
+    });
+
+    historyItems.forEach((item) => {
+      const isVisible = filter === 'all' || item.dataset.transactionType === filter;
+      item.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+
+    if (emptyHistory) emptyHistory.hidden = visibleCount !== 0;
+  });
+});

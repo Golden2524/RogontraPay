@@ -177,3 +177,31 @@ footer { padding-block: 1.5rem; border-top: 1px solid var(--border); color: var(
   .transfer-main { padding-top: 3.5rem; }
   .transfer-form, .transfer-review { padding: 1.75rem; }
 }
+
+/* Transaction history */
+.transactions-main { padding: 2.5rem 0 4rem; }
+.transactions-shell { width: min(90%, 52rem); margin-inline: auto; }
+.transactions-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; margin: 1.5rem 0 2rem; }
+.transactions-heading .eyebrow { margin-bottom: 0.35rem; }
+.transactions-heading h1 { font-size: clamp(2rem, 6vw, 2.75rem); letter-spacing: -0.04em; }
+.download-button { padding: 0.65rem 0.85rem; color: var(--brand); font: inherit; font-size: 0.875rem; font-weight: 700; background: #ffffff; border: 1px solid #b9d9fc; border-radius: 8px; cursor: pointer; }
+.history-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.history-summary div { padding: 1rem; background: #ffffff; border: 1px solid var(--border); border-radius: 12px; }
+.history-summary span { display: block; color: var(--muted); font-size: 0.75rem; }
+.history-summary strong { display: block; margin-top: 0.3rem; font-size: clamp(0.85rem, 3vw, 1.15rem); white-space: nowrap; }
+.history-card { margin-top: 1rem; padding: 1.25rem; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
+.history-card-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.history-card-heading h2 { font-size: 1.2rem; }
+.history-card-heading span { color: var(--muted); font-size: 0.8rem; }
+.transaction-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0.5rem; }
+.filter-button { padding: 0.45rem 0.75rem; color: var(--muted); font: inherit; font-size: 0.85rem; font-weight: 700; background: #ffffff; border: 1px solid var(--border); border-radius: 999px; cursor: pointer; }
+.filter-button.is-active { color: #ffffff; background: var(--brand); border-color: var(--brand); }
+.history-list { display: grid; margin: 0; padding: 0; list-style: none; }
+.history-list li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.75rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.history-list li[hidden] { display: none; }
+.empty-history { padding: 2rem 0 1rem; color: var(--muted); text-align: center; }
+
+@media (min-width: 700px) {
+  .transactions-main { padding-top: 3.5rem; }
+  .history-card { padding: 1.75rem; }
+}
