@@ -5,7 +5,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Golden Pay — Home</title>
@@ -29,7 +28,7 @@
 
       <nav id="primary-navigation" class="nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -40,11 +39,22 @@
 
   <main>
     <!-- HERO -->
-    <section id="hero" class="hero">
-      <div class="container">
-        <h1>Power Your Payments. Anywhere. Anytime.</h1>
-        <p>Payments that arrive in record time. Built for freelancers and businesses.</p>
-        <a class="btn-primary" href="contact.html">Get Started</a>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">For freelancers & small businesses</span>
+          <h1>Payments that arrive in record time.</h1>
+          <p class="lead">Golden Pay processes transactions faster with bank-grade security and an easy
+            developer-friendly API.</p>
+          <div class="hero-ctas">
+            <a class="btn-primary" href="contact.html#contact-form">Get Started — Free</a>
+            <a class="btn-secondary" href="about.html">Learn More</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img src="assets/images/hero-illustration.svg" alt="Golden Pay illustration showing fast transactions" />
+        </div>
       </div>
     </section>
 
@@ -68,6 +78,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
@@ -79,65 +90,7 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('primary-navigation');
-
-      if (!toggle || !nav) return;
-
-      // Open/close function
-      function setExpanded(isOpen) {
-        toggle.setAttribute('aria-expanded', String(isOpen));
-        toggle.setAttribute('aria-label', isOpen ? 'Close main menu' : 'Open main menu');
-        if (isOpen) {
-          nav.style.display = 'block';
-          // move focus to first link for keyboard users
-          const firstLink = nav.querySelector('a');
-          if (firstLink) firstLink.focus();
-        } else {
-          nav.style.display = ''; // fallback to CSS behavior (desktop shows it)
-        }
-      }
-
-      // Toggle on click
-      toggle.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        setExpanded(!isOpen);
-      });
-
-      // Close menu on Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-          setExpanded(false);
-          toggle.focus();
-        }
-      });
-
-      // Optional: close when a link is clicked (mobile UX)
-      nav.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target.tagName === 'A' && window.innerWidth < 700) {
-          setExpanded(false);
-        }
-      });
-
-      // Ensure right initial state on resize (desktop -> mobile)
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 700) {
-          // clear inline style so CSS controls layout on desktop
-          nav.style.display = '';
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    })();
-  </script>
-
-
-  <script>
-    // small JS just to set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

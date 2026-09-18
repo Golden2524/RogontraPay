@@ -30,7 +30,7 @@
       <nav id="primary-navigation" class="nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -78,64 +78,7 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const toggle = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('primary-navigation');
-
-      if (!toggle || !nav) return;
-
-      // Open/close function
-      function setExpanded(isOpen) {
-        toggle.setAttribute('aria-expanded', String(isOpen));
-        toggle.setAttribute('aria-label', isOpen ? 'Close main menu' : 'Open main menu');
-        if (isOpen) {
-          nav.style.display = 'block';
-          // move focus to first link for keyboard users
-          const firstLink = nav.querySelector('a');
-          if (firstLink) firstLink.focus();
-        } else {
-          nav.style.display = ''; // fallback to CSS behavior (desktop shows it)
-        }
-      }
-
-      // Toggle on click
-      toggle.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        setExpanded(!isOpen);
-      });
-
-      // Close menu on Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-          setExpanded(false);
-          toggle.focus();
-        }
-      });
-
-      // Optional: close when a link is clicked (mobile UX)
-      nav.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target.tagName === 'A' && window.innerWidth < 700) {
-          setExpanded(false);
-        }
-      });
-
-      // Ensure right initial state on resize (desktop -> mobile)
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 700) {
-          // clear inline style so CSS controls layout on desktop
-          nav.style.display = '';
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    })();
-  </script>
-
-  <script>
-    // small JS just to set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
