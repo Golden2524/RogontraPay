@@ -123,3 +123,31 @@ transactionFilterButtons.forEach((button) => {
     if (emptyHistory) emptyHistory.hidden = visibleCount !== 0;
   });
 });
+
+document.querySelectorAll('[data-password-toggle]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const input = button.previousElementSibling;
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    button.textContent = isPassword ? 'Hide' : 'Show';
+    button.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+  });
+});
+
+document.querySelectorAll('[data-auth-form]').forEach((form) => {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (toast) {
+      toast.textContent = 'Authentication will be connected when the secure backend is built.';
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3500);
+    }
+  });
+});

@@ -205,3 +205,39 @@ footer { padding-block: 1.5rem; border-top: 1px solid var(--border); color: var(
   .transactions-main { padding-top: 3.5rem; }
   .history-card { padding: 1.75rem; }
 }
+
+/* Authentication */
+.auth-page { min-height: 100vh; background: #f5f8fc; }
+.auth-layout { display: grid; min-height: 100vh; }
+.auth-intro { display: none; }
+.auth-panel { display: grid; place-items: center; padding: 1.5rem; }
+.auth-card { width: min(100%, 28rem); }
+.mobile-back-link { margin-bottom: 2rem; }
+.auth-card h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); letter-spacing: -0.04em; }
+.auth-subtitle { margin-top: 0.5rem; color: var(--muted); }
+.auth-form { max-width: none; margin-top: 1.75rem; }
+.auth-form input { margin-top: 0; }
+.label-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-top: 0.5rem; }
+.label-row label { margin-top: 0; }
+.password-field { display: flex; align-items: center; overflow: hidden; border: 1px solid #c8d8e7; border-radius: 8px; }
+.password-field:focus-within { outline: 3px solid rgba(11, 129, 255, 0.35); outline-offset: 3px; }
+.password-field input { border: 0; outline: 0; }
+.password-toggle { padding: 0.5rem 0.75rem; color: var(--brand); font: inherit; font-size: 0.8rem; font-weight: 700; background: transparent; border: 0; cursor: pointer; }
+.terms-label { display: flex; align-items: flex-start; gap: 0.65rem; color: var(--muted); font-size: 0.85rem; font-weight: 400; }
+.terms-label input { width: auto; margin-top: 0.2rem; }
+.auth-submit { width: 100%; margin-top: 0.75rem; }
+.auth-switch { margin-top: 1.5rem; color: var(--muted); font-size: 0.9rem; text-align: center; }
+.auth-switch a { color: var(--brand); font-weight: 700; }
+.auth-demo-note { margin-top: 1.5rem; color: var(--muted); font-size: 0.75rem; text-align: center; }
+
+@media (min-width: 800px) {
+  .auth-layout { grid-template-columns: minmax(18rem, 0.9fr) minmax(28rem, 1.1fr); }
+  .auth-intro { display: flex; flex-direction: column; justify-content: space-between; padding: 3rem clamp(2rem, 6vw, 6rem); color: #ffffff; background: linear-gradient(145deg, #0b2438, #0b81ff); }
+  .auth-intro .logo { color: #ffffff; }
+  .auth-intro h1 { max-width: 12ch; margin-top: 0.5rem; font-size: clamp(2.4rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.05em; }
+  .auth-intro div > p:not(.eyebrow) { max-width: 43ch; margin-top: 1.25rem; color: rgba(255, 255, 255, 0.78); }
+  .auth-intro .eyebrow { color: var(--accent); }
+  .auth-footer-copy { color: rgba(255, 255, 255, 0.66); font-size: 0.85rem; }
+  .auth-panel { padding: 3rem; background: #ffffff; }
+  .mobile-back-link { display: none; }
+}

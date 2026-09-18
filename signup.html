@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a Golden Pay demo account.">
+  <title>Golden Pay — Create account</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <main class="auth-layout">
+    <section class="auth-intro">
+      <a class="logo" href="index.html">Golden Pay</a>
+      <div>
+        <p class="eyebrow">Start in minutes</p>
+        <h1>Your financial life, in one place.</h1>
+        <p>Open an account, manage your money, and stay informed with every payment.</p>
+      </div>
+      <p class="auth-footer-copy">© <span id="year"></span> Golden Pay</p>
+    </section>
+
+    <section class="auth-panel" aria-labelledby="signup-heading">
+      <div class="auth-card">
+        <a class="back-link mobile-back-link" href="index.html">← Back to home</a>
+        <h2 id="signup-heading">Create your account</h2>
+        <p class="auth-subtitle">It only takes a few details to get started.</p>
+        <form class="auth-form" data-auth-form novalidate>
+          <label for="full-name">Full name</label>
+          <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required>
+
+          <label for="signup-email">Email address</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+
+          <label for="signup-password">Create a password</label>
+          <div class="password-field"><input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required><button class="password-toggle" type="button" data-password-toggle aria-label="Show password">Show</button></div>
+          <p class="field-hint">Use at least 8 characters.</p>
+
+          <label class="terms-label"><input type="checkbox" required> <span>I agree to the Terms of Service and Privacy Policy.</span></label>
+          <button class="btn-primary auth-submit" type="submit">Create account</button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+        <p class="auth-demo-note">Portfolio demo: this form does not collect or save credentials.</p>
+      </div>
+    </section>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
