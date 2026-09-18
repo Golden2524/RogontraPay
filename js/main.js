@@ -59,3 +59,42 @@ document.querySelectorAll('[data-demo-action]').forEach((button) => {
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3500);
   });
 });
+
+const transferForm = document.querySelector('[data-transfer-form]');
+const transferReview = document.getElementById('transfer-review');
+const editTransferButton = document.querySelector('[data-edit-transfer]');
+
+if (transferForm && transferReview) {
+  transferForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!transferForm.checkValidity()) {
+      transferForm.reportValidity();
+      return;
+    }
+
+    const values = new FormData(transferForm);
+    const amount = Number(values.get('amount'));
+    const formattedAmount = new Intl.NumberFormat('en-NG', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+
+    document.querySelector('[data-review-bank]').textContent = values.get('bank');
+    document.querySelector('[data-review-account]').textContent = values.get('accountNumber');
+    document.querySelector('[data-review-amount]').textContent = `₦${formattedAmount}`;
+    document.querySelector('[data-review-narration]').textContent = values.get('narration') || 'No narration';
+
+    transferForm.hidden = true;
+    transferReview.hidden = false;
+    transferReview.focus();
+  });
+}
+
+if (editTransferButton && transferForm && transferReview) {
+  editTransferButton.addEventListener('click', () => {
+    transferReview.hidden = true;
+    transferForm.hidden = false;
+    transferForm.querySelector('#bank').focus();
+  });
+}

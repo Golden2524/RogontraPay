@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Golden Pay transfer demo for sending money to a bank account.">
+  <title>Golden Pay — Transfer money</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+  <header class="dashboard-header">
+    <div class="container">
+      <a href="index.html" class="logo">Golden Pay</a>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open main menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="line line1" d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path class="line line2" d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path class="line line3" d="M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <nav id="primary-navigation" class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="transfer-main">
+    <div class="transfer-shell">
+      <a class="back-link" href="dashboard.html">← Back to dashboard</a>
+      <div class="transfer-heading">
+        <p class="eyebrow">Send money</p>
+        <h1>Make a bank transfer</h1>
+        <p>Enter the recipient’s details and review the transfer before it is sent.</p>
+      </div>
+
+      <form class="transfer-form" data-transfer-form novalidate>
+        <fieldset>
+          <legend>Recipient details</legend>
+          <label for="bank">Recipient bank</label>
+          <select id="bank" name="bank" required>
+            <option value="">Choose a bank</option>
+            <option>Access Bank</option>
+            <option>First Bank</option>
+            <option>GTCO</option>
+            <option>Kuda</option>
+            <option>Moniepoint MFB</option>
+            <option>Opay</option>
+          </select>
+
+          <label for="account-number">Account number</label>
+          <input id="account-number" name="accountNumber" type="text" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" placeholder="10-digit account number" required>
+          <p class="field-hint">For this demo, use any 10 digits.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Transfer details</legend>
+          <label for="amount">Amount</label>
+          <div class="amount-input"><span aria-hidden="true">₦</span><input id="amount" name="amount" type="number" min="100" step="100" placeholder="0.00" required></div>
+
+          <label for="narration">Narration <span>(optional)</span></label>
+          <input id="narration" name="narration" type="text" maxlength="50" placeholder="What is this transfer for?">
+        </fieldset>
+
+        <p class="transfer-notice">This is a portfolio demonstration. No funds will be sent.</p>
+        <button class="btn-primary transfer-submit" type="submit">Review transfer</button>
+      </form>
+
+      <section class="transfer-review" id="transfer-review" hidden tabindex="-1" aria-labelledby="review-heading">
+        <p class="eyebrow">Review transfer</p>
+        <h2 id="review-heading">Confirm the details</h2>
+        <dl class="review-list">
+          <div><dt>Recipient bank</dt><dd data-review-bank></dd></div>
+          <div><dt>Account number</dt><dd data-review-account></dd></div>
+          <div><dt>Amount</dt><dd data-review-amount></dd></div>
+          <div><dt>Narration</dt><dd data-review-narration></dd></div>
+        </dl>
+        <div class="review-actions">
+          <button class="btn-secondary" type="button" data-edit-transfer>Edit details</button>
+          <button class="btn-primary" type="button" data-demo-action="Transfer confirmation will be connected to the secure backend later.">Continue securely</button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
