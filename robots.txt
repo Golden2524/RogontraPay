@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://golden2524.github.io/RogontraPay/sitemap.xml

@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rogontra Pay — Contact</title>
-  <meta name="description" content="Rogontra Pay — fast, secure digital payments for businesses and freelancers." />
+  <meta name="description" content="Contact the owner of the Rogontra Pay payment-platform portfolio prototype." />
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -53,7 +53,7 @@
     <section id="contact" class="contact-section">
       <div class="container">
         <h2>Contact Us</h2>
-        <form action="#" method="post" id="contact-form">
+        <form id="contact-form" data-contact-form novalidate>
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required>
 
@@ -64,6 +64,7 @@
           <textarea id="message" name="message" rows="5" required></textarea>
 
           <button type="submit" class="btn-primary">Send Message</button>
+          <p class="form-status" data-contact-status aria-live="polite"></p>
         </form>
       </div>
     </section>

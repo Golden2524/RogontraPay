@@ -151,3 +151,21 @@ document.querySelectorAll('[data-auth-form]').forEach((form) => {
     }
   });
 });
+
+const contactForm = document.querySelector('[data-contact-form]');
+const contactStatus = document.querySelector('[data-contact-status]');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+
+    if (contactStatus) {
+      contactStatus.textContent = 'Thanks for your message. The support inbox will be connected when the backend is built.';
+    }
+  });
+}
