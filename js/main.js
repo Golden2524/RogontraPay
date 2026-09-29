@@ -7,6 +7,7 @@ function setMenuState(isOpen) {
   menuButton.setAttribute('aria-expanded', String(isOpen));
   menuButton.setAttribute('aria-label', isOpen ? 'Close main menu' : 'Open main menu');
   navigation.classList.toggle('is-open', isOpen);
+  document.body.classList.toggle('menu-open', isOpen);
 }
 
 if (menuButton && navigation) {
@@ -21,11 +22,22 @@ if (menuButton && navigation) {
     }
   });
 
+  document.addEventListener('click', (event) => {
+    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    if (isOpen && window.innerWidth < 700 && !navigation.contains(event.target) && !menuButton.contains(event.target)) {
+      setMenuState(false);
+    }
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
       setMenuState(false);
       menuButton.focus();
     }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 700) setMenuState(false);
   });
 }
 
