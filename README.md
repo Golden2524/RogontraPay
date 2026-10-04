@@ -1,6 +1,6 @@
 # Rogontra Pay
 
-A responsive digital-wallet frontend prototype that demonstrates a clear payment experience across a landing page, dashboard, transfer review flow, transaction history, and support pages.
+A responsive digital-wallet frontend case study. It explores how balance checking, transfer review, and transaction history can remain usable on both small and large screens.
 
 **Live demo:** [golden2524.github.io/RogontraPay](https://golden2524.github.io/RogontraPay/)
 
@@ -8,11 +8,11 @@ A responsive digital-wallet frontend prototype that demonstrates a clear payment
 
 ## Preview
 
-Rogontra Pay is designed around three simple product ideas:
+Rogontra Pay is built around three specific interface decisions:
 
-- Make balances and recent activity easy to scan.
-- Let users review transfer details before a future confirmation step.
-- Be clear about what the prototype does and does not do.
+- Keep balance, actions, and recent activity in a practical scan order.
+- Insert a review step before a user would continue with a transfer.
+- Clearly label all data and actions as frontend-only demonstrations.
 
 ## Features
 

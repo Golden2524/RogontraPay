@@ -4,19 +4,27 @@ const navigation = document.getElementById('primary-navigation');
 function setMenuState(isOpen) {
   if (!menuButton || !navigation) return;
 
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-  menuButton.setAttribute('aria-label', isOpen ? 'Close main menu' : 'Open main menu');
-  navigation.classList.toggle('is-open', isOpen);
-  document.body.classList.toggle('menu-open', isOpen);
+  const isDesktop = window.matchMedia('(min-width: 700px)').matches;
+  const shouldOpen = !isDesktop && isOpen;
+
+  menuButton.setAttribute('aria-expanded', String(shouldOpen));
+  menuButton.setAttribute('aria-label', shouldOpen ? 'Close main menu' : 'Open main menu');
+  navigation.classList.toggle('is-open', shouldOpen);
+  navigation.setAttribute('aria-hidden', String(!isDesktop && !shouldOpen));
+  navigation.inert = !isDesktop && !shouldOpen;
+  document.body.classList.toggle('menu-open', shouldOpen);
 }
 
 if (menuButton && navigation) {
-  menuButton.addEventListener('click', () => {
+  menuButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
     setMenuState(!isOpen);
   });
 
   navigation.addEventListener('click', (event) => {
+    event.stopPropagation();
     if (event.target.matches('a') && window.innerWidth < 700) {
       setMenuState(false);
     }
@@ -39,6 +47,8 @@ if (menuButton && navigation) {
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 700) setMenuState(false);
   });
+
+  setMenuState(false);
 }
 
 const year = document.getElementById('year');
