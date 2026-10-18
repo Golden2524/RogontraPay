@@ -83,7 +83,7 @@ footer { padding-block: 1.5rem; border-top: 1px solid var(--border); color: var(
 
 @media (min-width: 700px) {
   .nav-toggle { display: none; }
-  .nav { position: static; display: block; width: auto; max-height: none; padding: 0; overflow: visible; background: transparent; border: 0; border-radius: 0; box-shadow: none; opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+  .nav { position: static; display: block; width: auto; height: auto; max-height: none; padding: 0; overflow: visible; background: transparent; border: 0; border-radius: 0; box-shadow: none; opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
   .nav::before { display: none; }
   .nav-list { flex-direction: row; align-items: center; gap: 0.5rem; }
   .hero { padding-block: 5.5rem; }
