@@ -191,3 +191,93 @@ if (contactForm) {
     }
   });
 }
+
+const guideTopics = [
+  {
+    label: 'How do I make a transfer?',
+    answer: 'Open Transfer, add the recipient details, then review the amount and account number before you confirm. In this frontend demo, no money is sent.'
+  },
+  {
+    label: 'Where can I find a transaction?',
+    answer: 'Open Transaction history and use the Money in or Money out filters to narrow the sample activity. A live product would also add date and search filters.'
+  },
+  {
+    label: 'What should I check before sending?',
+    answer: 'Check the recipient name, bank, account number, amount, and narration. A real payment flow should make these details easy to review before a transfer is authorised.'
+  }
+];
+
+function createGuide() {
+  const launcher = document.createElement('button');
+  launcher.type = 'button';
+  launcher.className = 'guide-launcher';
+  launcher.setAttribute('aria-controls', 'rogo-guide');
+  launcher.setAttribute('aria-expanded', 'false');
+  launcher.innerHTML = '<span class="guide-launcher-mark" aria-hidden="true">?</span>Need help?';
+
+  const panel = document.createElement('aside');
+  panel.id = 'rogo-guide';
+  panel.className = 'guide-panel';
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-labelledby', 'guide-title');
+  panel.hidden = true;
+
+  const heading = document.createElement('div');
+  heading.className = 'guide-heading';
+  heading.innerHTML = '<div><h2 id="guide-title">Rogontra Guide</h2><p>Guided-help prototype</p></div><button class="guide-close" type="button" aria-label="Close guided help">×</button>';
+
+  const topics = document.createElement('div');
+  topics.className = 'guide-topics';
+  topics.setAttribute('aria-label', 'Guided help topics');
+  const answer = document.createElement('p');
+  answer.className = 'guide-answer';
+  answer.setAttribute('aria-live', 'polite');
+  answer.textContent = 'Choose a question for a short, practical answer.';
+
+  guideTopics.forEach((topic) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'guide-topic';
+    button.textContent = topic.label;
+    button.setAttribute('aria-pressed', 'false');
+    button.addEventListener('click', () => {
+      topics.querySelectorAll('.guide-topic').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      answer.textContent = topic.answer;
+    });
+    topics.append(button);
+  });
+
+  const safetyNote = document.createElement('p');
+  safetyNote.className = 'guide-safety-note';
+  safetyNote.textContent = 'Prototype only — never share a password, PIN, or card details in a help chat.';
+  panel.append(heading, topics, answer, safetyNote);
+  document.body.append(launcher, panel);
+
+  const closeButton = panel.querySelector('.guide-close');
+  const closeGuide = () => {
+    panel.hidden = true;
+    launcher.setAttribute('aria-expanded', 'false');
+  };
+
+  launcher.addEventListener('click', () => {
+    const willOpen = panel.hidden;
+    if (willOpen && menuButton?.getAttribute('aria-expanded') === 'true') setMenuState(false);
+    panel.hidden = !willOpen;
+    launcher.setAttribute('aria-expanded', String(willOpen));
+    if (willOpen) closeButton.focus();
+  });
+
+  closeButton.addEventListener('click', () => {
+    closeGuide();
+    launcher.focus();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !panel.hidden) {
+      closeGuide();
+      launcher.focus();
+    }
+  });
+}
+
+createGuide();
